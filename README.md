@@ -1,88 +1,90 @@
 # Catchup-Platform
 
-Este proyecto es una plataforma para gestionar fuentes favoritas (**FavoriteSource**) utilizando **Java**, **Spring Boot** y el patrón **CQRS** (Separación de Comandos y Consultas). El proyecto sigue los principios de **Clean Architecture** para asegurar una separación clara de las responsabilidades y facilitar el mantenimiento.
+This project is a platform for managing favorite sources (**FavoriteSource**) using **Java**, **Spring Boot**, and the **CQRS** (Command Query Responsibility Segregation) pattern. The project follows the principles of **Clean Architecture** to ensure a clear separation of responsibilities and facilitate maintenance.
+# MEMBERS
+## Aarón Alexander Avila Palacios (U201823654)
 
-## Tabla de Contenidos
+## Table of Contents
 
-- [Descripción](#descripción)
-- [Arquitectura](#arquitectura)
-- [Instalación](#instalación)
-- [Uso](#uso)
+- [Description](#description)
+- [Architecture](#architecture)
+- [Installation](#installation)
+- [Usage](#usage)
 - [API Endpoints](#api-endpoints)
-- [Tecnologías](#tecnologías)
-- [Contribución](#contribución)
-- [Licencia](#licencia)
+- [Technologies](#technologies)
+- [Contribution](#contribution)
+- [License](#license)
 
-## Descripción
+## Description
 
-La plataforma permite a los usuarios gestionar sus fuentes favoritas con las operaciones CRUD (Crear, Leer, Actualizar, Eliminar) mediante una API REST. Implementa el patrón **CQRS** para separar las responsabilidades entre comandos y consultas, mejorando la escalabilidad y la organización del código.
+The platform allows users to manage their favorite sources with CRUD operations (Create, Read, Update, Delete) through a REST API. It implements the **CQRS** pattern to separate responsibilities between commands and queries, improving scalability and code organization.
 
-## Arquitectura
+## Architecture
 
-El proyecto sigue la estructura de **Clean Architecture**. Está dividido en las siguientes capas:
+The project follows the structure of **Clean Architecture**. It is divided into the following layers:
 
-- **Domain (Dominio)**: Contiene las entidades centrales, como `FavoriteSource`, que representan el estado del dominio.
-- **Application (Aplicación)**: Contiene la lógica de negocio, como los servicios de comandos y consultas.
-- **Infrastructure (Infraestructura)**: Contiene los repositorios y la lógica relacionada con la persistencia de datos.
-- **Web**: Contiene los controladores que manejan las solicitudes HTTP y exponen la API REST.
+- **Domain**: Contains the core entities, such as `FavoriteSource`, which represent the state of the domain.
+- **Application**: Contains the business logic, such as command and query services.
+- **Infrastructure**: Contains repositories and the logic related to data persistence.
+- **Web**: Contains controllers that handle HTTP requests and expose the REST API.
 
-## Instalación
+## Installation
 
-### Prerrequisitos
+### Prerequisites
 
-- **Java 17** o superior
-- **Maven** o **Gradle**
+- **Java 17** or higher
+- **Maven** or **Gradle**
 - **Git**
 
-### Pasos de instalación
+### Installation Steps
 
-1. Clona este repositorio:
+1. Clone this repository:
     ```bash
-    git clone <URL-del-repositorio>
+    git clone <repository-url>
     ```
 
-2. Navega al directorio del proyecto:
+2. Navigate to the project directory:
     ```bash
     cd catchup-platform
     ```
 
-3. Construye el proyecto con **Maven**:
+3. Build the project with **Maven**:
     ```bash
     mvn clean install
     ```
 
-4. Ejecuta la aplicación:
+4. Run the application:
     ```bash
     mvn spring-boot:run
     ```
 
-## Uso
+## Usage
 
-La aplicación expone una API REST para realizar operaciones CRUD sobre las fuentes favoritas (**FavoriteSource**). Por defecto, utiliza una base de datos H2 en memoria, accesible a través de la consola de H2.
+The application exposes a REST API to perform CRUD operations on favorite sources (**FavoriteSource**). By default, it uses an in-memory H2 database, accessible through the H2 console.
 
-### Acceder a la consola de H2:
+### Access the H2 Console:
 - URL: `http://localhost:8080/h2-console`
 - JDBC URL: `jdbc:h2:mem:testdb`
-- Usuario: `sa`
-- Contraseña: *(vacío)*
+- User: `sa`
+- Password: *(empty)*
 
 ## API Endpoints
 
-| Método | Endpoint            | Descripción                        |
+| Method | Endpoint            | Description                        |
 |--------|---------------------|------------------------------------|
-| GET    | `/api/favorites`     | Listar todas las fuentes favoritas |
-| GET    | `/api/favorites/{id}`| Obtener una fuente por su ID       |
-| POST   | `/api/favorites`     | Crear una nueva fuente             |
-| PUT    | `/api/favorites/{id}`| Actualizar una fuente existente    |
-| DELETE | `/api/favorites/{id}`| Eliminar una fuente existente      |
+| GET    | `/api/favorites`     | List all favorite sources          |
+| GET    | `/api/favorites/{id}`| Get a favorite source by ID        |
+| POST   | `/api/favorites`     | Create a new favorite source       |
+| PUT    | `/api/favorites/{id}`| Update an existing favorite source |
+| DELETE | `/api/favorites/{id}`| Delete an existing favorite source |
 
-### Ejemplo de solicitud para crear una fuente:
+### Example request to create a favorite source:
 
 **POST** `/api/favorites`
 ```json
 {
-  "name": "Fuente de Noticias",
+  "name": "News Source",
   "url": "https://example.com",
-  "description": "Una fuente de noticias confiable."
+  "description": "A reliable news source."
 }
 
